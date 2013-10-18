@@ -51,6 +51,7 @@ $lang = array_merge($lang, array(
 	'GROUP_APPROVED'				=> 'Membres approuvés',
 	'GROUP_AVATAR'					=> 'Avatar du groupe',
 	'GROUP_AVATAR_EXPLAIN'			=> 'Cette image sera affichée dans le panneau de contrôle des groupes d’utilisateurs.',
+	'GROUP_CONTOUR_AVATAR'			=> 'Contour des avatars du groupe',
 	'GROUP_CLOSED'					=> 'Fermé',
 	'GROUP_COLOR'					=> 'Couleur du groupe ',
 	'GROUP_COLOR_EXPLAIN'			=> 'La couleur dans laquelle les noms d’utilisateurs des membres apparaîtront. Laissez ce champ vide si vous souhaitez conserver la couleur des membres par défaut.',
