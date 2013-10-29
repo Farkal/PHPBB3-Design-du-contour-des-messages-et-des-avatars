@@ -329,6 +329,7 @@ class acp_groups
 					$data['width']		= request_var('width', '');
 					$data['height']		= request_var('height', '');
 					$delete				= request_var('delete', '');
+					$delete_contour		= request_var('delete_contour', '');
 
 					$submit_ary = array(
 						'colour'			=> request_var('group_colour', ''),
@@ -345,6 +346,62 @@ class acp_groups
 					{
 						$submit_ary['founder_manage'] = isset($_REQUEST['group_founder_manage']) ? 1 : 0;
 					}
+					
+					// MOD CONTOUR START -- upload contour picture
+					
+					$allowedExts = array("gif", "jpeg", "jpg", "png");
+					$temp = explode(".", $_FILES["uploadfilecontour"]["name"]);
+					$extension = end($temp);
+					if ((($_FILES["uploadfilecontour"]["type"] == "image/gif") || ($_FILES["uploadfilecontour"]["type"] == "image/jpeg")
+					|| ($_FILES["uploadfilecontour"]["type"] == "image/jpg") || ($_FILES["uploadfilecontour"]["type"] == "image/pjpeg")
+					|| ($_FILES["uploadfilecontour"]["type"] == "image/x-png") || ($_FILES["uploadfilecontour"]["type"] == "image/png"))
+					&& ($_FILES["uploadfilecontour"]["size"] < 20000) && in_array($extension, $allowedExts))
+					{
+						if ($_FILES["file"]["error"] <= 0)
+						{
+							if (!file_exists($phpbb_root_path . "images/avatars/upload/" . $_FILES["uploadfilecontour"]["name"]))
+							{
+								move_uploaded_file($_FILES["uploadfilecontour"]["tmp_name"],$phpbb_root_path . "images/avatars/upload/" . $_FILES["uploadfilecontour"]["name"]);
+								$sql = 'UPDATE ' . GROUPS_TABLE . '
+								SET group_contour_avatar = "' . $_FILES["uploadfilecontour"]["name"] . '"
+								WHERE group_id = ' . $group_id;
+								$db->sql_query($sql);
+								$sql = 'UPDATE ' . USERS_TABLE . '
+								SET user_contour_avatar = "' . $_FILES["uploadfilecontour"]["name"] . '"
+								WHERE group_id = ' . $group_id;
+								$db->sql_query($sql);
+							}
+							else
+							{
+								echo "Fichier déjà existant";
+							}
+						}
+					}
+					else if ($delete_contour)
+					{
+						$sql = 'SELECT group_contour_avatar FROM ' . GROUPS_TABLE . ' WHERE group_id = ' . $group_id;
+						$result = $db->sql_query($sql);
+						while($tabcontour_picture_name = $db->sql_fetchrow($result))
+						{
+							$contour_picture_name = $tabcontour_picture_name[group_contour_avatar];
+						}
+						$db->sql_freeresult($result);
+						$sql = 'UPDATE ' . GROUPS_TABLE . '
+						SET group_contour_avatar = ""
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+						$sql = 'UPDATE ' . USERS_TABLE . '
+						SET user_contour_avatar = ""
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+						$fichier = $phpbb_root_path . "images/avatars/upload/" . $contour_picture_name;
+						if (!unlink($fichier))
+						{
+							echo "Erreur lors de la suppression du fichier $fichier";
+						}
+					}
+					
+					// MOD CONTOUR END
 
 					if (!empty($_FILES['uploadfile']['tmp_name']) || $data['uploadurl'] || $data['remotelink'])
 					{
@@ -582,6 +639,7 @@ class acp_groups
 				$type_hidden	= ($group_type == GROUP_HIDDEN) ? ' checked="checked"' : '';
 
 				$avatar_img = (!empty($group_row['group_avatar'])) ? get_user_avatar($group_row['group_avatar'], $group_row['group_avatar_type'], $group_row['group_avatar_width'], $group_row['group_avatar_height'], 'GROUP_AVATAR') : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
+				$contour_avatar_img = (!empty($group_row['group_contour_avatar'])) ? '<img src="' . $phpbb_root_path . 'images/avatars/upload/' . $group_row["group_contour_avatar"] .'" alt="' . $group_row["group_contour_avatar"]. '" />' : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
 
 				$display_gallery = (isset($_POST['display_gallery'])) ? true : false;
 
@@ -638,6 +696,7 @@ class acp_groups
 					'AVATAR_MAX_FILESIZE'	=> $config['avatar_filesize'],
 					'AVATAR_WIDTH'			=> (isset($group_row['group_avatar_width'])) ? $group_row['group_avatar_width'] : '',
 					'AVATAR_HEIGHT'			=> (isset($group_row['group_avatar_height'])) ? $group_row['group_avatar_height'] : '',
+					'CONTOUR_AVATAR_IMAGE'	=> $contour_avatar_img,
 
 					'GROUP_TYPE_FREE'		=> GROUP_FREE,
 					'GROUP_TYPE_OPEN'		=> GROUP_OPEN,

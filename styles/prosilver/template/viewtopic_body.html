@@ -167,9 +167,10 @@
 
 		<!-- IF not postrow.S_IGNORE_POST -->
 			<dl class="postprofile" id="profile{postrow.POST_ID}">
-			<dt>
+			<dt style="position: relative">
 				<!-- IF postrow.POSTER_AVATAR -->
-					<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}">{postrow.POSTER_AVATAR}</a><!-- ELSE -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
+				{postrow.POSTER_CONTOUR_AVATAR}
+					<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}"><span style="position: absolute; top: 19px; left: 28px">{postrow.POSTER_AVATAR}</span></a><!-- ELSE -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
 				<!-- ENDIF -->
 				<!-- IF not postrow.U_POST_AUTHOR --><strong>{postrow.POST_AUTHOR_FULL}</strong><!-- ELSE -->{postrow.POST_AUTHOR_FULL}<!-- ENDIF -->
 			</dt>

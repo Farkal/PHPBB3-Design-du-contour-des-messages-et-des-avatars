@@ -1102,6 +1102,7 @@ while ($row = $db->sql_fetchrow($result))
 
 				'online'			=> false,
 				'avatar'			=> ($user->optionget('viewavatars')) ? get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']) : '',
+				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . 'images/avatars/upload/' . $row["user_contour_avatar"] .'" alt="' . $row["user_contour_avatar"]. '" />' : '',
 				'rank_title'		=> '',
 				'rank_image'		=> '',
 				'rank_image_src'	=> '',
@@ -1154,6 +1155,7 @@ while ($row = $db->sql_fetchrow($result))
 				'allow_pm'		=> $row['user_allow_pm'],
 
 				'avatar'		=> ($user->optionget('viewavatars')) ? get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']) : '',
+				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . 'images/avatars/upload/' . $row["user_contour_avatar"] .'" alt="' . $row["user_contour_avatar"]. '" />' : '',
 				'age'			=> '',
 
 				'rank_title'		=> '',
@@ -1536,6 +1538,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 		'POSTER_POSTS'		=> $user_cache[$poster_id]['posts'],
 		'POSTER_FROM'		=> $user_cache[$poster_id]['from'],
 		'POSTER_AVATAR'		=> $user_cache[$poster_id]['avatar'],
+		'POSTER_CONTOUR_AVATAR'		=> $user_cache[$poster_id]['contour_avatar'],
 		'POSTER_WARNINGS'	=> $user_cache[$poster_id]['warnings'],
 		'POSTER_AGE'		=> $user_cache[$poster_id]['age'],
 
