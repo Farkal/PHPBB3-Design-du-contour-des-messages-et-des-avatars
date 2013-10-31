@@ -174,12 +174,11 @@
 		<?php if (! $_postrow_val['S_IGNORE_POST']) {  ?>
 
 			<dl class="postprofile" id="profile<?php echo $_postrow_val['POST_ID']; ?>">
-			<dt style="position: relative">
+			<dt>
 				<?php if ($_postrow_val['POSTER_AVATAR']) {  ?>
 
-				<?php echo $_postrow_val['POSTER_CONTOUR_AVATAR']; ?>
-
-					<?php if ($_postrow_val['U_POST_AUTHOR']) {  ?><a href="<?php echo $_postrow_val['U_POST_AUTHOR']; ?>"><span style="position: absolute; top: 19px; left: 28px"><?php echo $_postrow_val['POSTER_AVATAR']; ?></span></a><?php } else { echo $_postrow_val['POSTER_AVATAR']; } ?><br />
+				<span style="position: absolute"><?php echo $_postrow_val['POSTER_CONTOUR_AVATAR']; ?></span>
+					<?php if ($_postrow_val['U_POST_AUTHOR']) {  ?><a href="<?php echo $_postrow_val['U_POST_AUTHOR']; ?>"><span style="position: relative; top: 19px; left: 28px; display: block; margin-bottom: 30px"><?php echo $_postrow_val['POSTER_AVATAR']; ?></span></a><?php } else { echo $_postrow_val['POSTER_AVATAR']; } ?><br />
 				<?php } if (! $_postrow_val['U_POST_AUTHOR']) {  ?><strong><?php echo $_postrow_val['POST_AUTHOR_FULL']; ?></strong><?php } else { echo $_postrow_val['POST_AUTHOR_FULL']; } ?>
 
 			</dt>

@@ -51,6 +51,7 @@ $lang = array_merge($lang, array(
 	'GROUP_APPROVED'				=> 'Approved members',
 	'GROUP_AVATAR'					=> 'Group avatar',
 	'GROUP_AVATAR_EXPLAIN'			=> 'This image will be displayed in the Group Control Panel.',
+	'GROUP_CONTOUR_AVATAR'			=> 'Group contour avatar',
 	'GROUP_CLOSED'					=> 'Closed',
 	'GROUP_COLOR'					=> 'Group colour',
 	'GROUP_COLOR_EXPLAIN'			=> 'Defines the colour members’ usernames will appear in, leave blank for user default.',

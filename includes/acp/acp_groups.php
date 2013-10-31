@@ -395,10 +395,14 @@ class acp_groups
 						WHERE group_id = ' . $group_id;
 						$db->sql_query($sql);
 						$fichier = $phpbb_root_path . "images/avatars/upload/" . $contour_picture_name;
-						if (!unlink($fichier))
+						if (!file_exists($fichier))
 						{
-							echo "Erreur lors de la suppression du fichier $fichier";
+							if (!unlink($fichier))
+							{
+								echo "Erreur lors de la suppression du fichier $fichier";
+							}
 						}
+						
 					}
 					
 					// MOD CONTOUR END
