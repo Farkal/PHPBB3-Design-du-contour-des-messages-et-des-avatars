@@ -349,6 +349,84 @@ class acp_groups
 					
 					// MOD CONTOUR START -- upload contour picture
 					
+					if (!empty($_FILES['uploadfilecontour']['name']))
+					{
+						include_once($phpbb_root_path . 'includes/functions_upload.' . $phpEx);
+						$upload = new fileupload('CONTOUR_', array('jpg', 'jpeg', 'gif', 'png'), $config['contour_filesize'], $config['contour_min_width'], $config['contour_min_height'], $config['contour_max_width'], $config['contour_max_height'], (isset($config['mime_triggers']) ? explode('|', $config['mime_triggers']) : false));
+						$file = $upload->form_upload('uploadfilecontour');
+						
+						$data['user_id'] = "10000$group_id";
+						
+						$prefix = $config['avatar_salt'] . '_';
+						$file->clean_filename('avatar', $prefix, $data['user_id']);
+						
+						$destination = $config['contour_path'];
+						
+						// Adjust destination path (no trailing slash)
+						if (substr($destination, -1, 1) == '/' || substr($destination, -1, 1) == '\\')
+						{
+							$destination = substr($destination, 0, -1);
+						}
+						
+						$destination = str_replace(array('../', '..\\', './', '.\\'), '', $destination);
+						if ($destination && ($destination[0] == '/' || $destination[0] == "\\"))
+						{
+							$destination = '';
+						}
+
+						// Move file and overwrite any existing image
+						$file->move_file($destination, true);
+						
+						$sql = 'UPDATE ' . GROUPS_TABLE . '
+						SET group_contour_avatar = "' . $db->sql_escape($data['user_id'] . '_' . time() . '.' . $file->get('extension')) . '"
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+						
+						$sql = 'UPDATE ' . USERS_TABLE . '
+						SET user_contour_avatar = "' . $db->sql_escape($data['user_id'] . '_' . time() . '.' . $file->get('extension')) . '"
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+								
+						
+						
+						
+					}
+					else if ($delete_contour)
+					{
+						
+						// Delete the picture
+						$sql = 'SELECT group_contour_avatar FROM ' . GROUPS_TABLE . ' WHERE group_id = ' . $group_id;
+						$result = $db->sql_query($sql);
+						while($tabcontour_picture_name = $db->sql_fetchrow($result))
+						{
+							$filename = $tabcontour_picture_name[group_contour_avatar];
+						}
+						$db->sql_freeresult($result);
+						
+						//get_avatar_filename($row[$mode . '_avatar']);
+						$ext 			= substr(strrchr($filename, '.'), 1);
+						$avatar_entry	= intval($filename);
+						$filename = $config['avatar_salt'] . '_' . $avatar_entry . '.' . $ext;
+						
+						if (file_exists($phpbb_root_path . $config['contour_path'] . '/' . $filename))
+						{
+							@unlink($phpbb_root_path . $config['contour_path'] . '/' . $filename);
+							
+						}
+
+						// Delete from database
+						$sql = 'UPDATE ' . GROUPS_TABLE . '
+						SET group_contour_avatar = ""
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+						
+						$sql = 'UPDATE ' . USERS_TABLE . '
+						SET user_contour_avatar = ""
+						WHERE group_id = ' . $group_id;
+						$db->sql_query($sql);
+						
+					}
+					/*
 					$allowedExts = array("gif", "jpeg", "jpg", "png");
 					$temp = explode(".", $_FILES["uploadfilecontour"]["name"]);
 					$extension = end($temp);
@@ -373,7 +451,7 @@ class acp_groups
 							}
 							else
 							{
-								echo "Fichier déjà existant";
+								trigger_error ('Fichier déjà existant');
 							}
 						}
 					}
@@ -404,7 +482,7 @@ class acp_groups
 						}
 						
 					}
-					
+					*/
 					// MOD CONTOUR END
 
 					if (!empty($_FILES['uploadfile']['tmp_name']) || $data['uploadurl'] || $data['remotelink'])
@@ -643,7 +721,7 @@ class acp_groups
 				$type_hidden	= ($group_type == GROUP_HIDDEN) ? ' checked="checked"' : '';
 
 				$avatar_img = (!empty($group_row['group_avatar'])) ? get_user_avatar($group_row['group_avatar'], $group_row['group_avatar_type'], $group_row['group_avatar_width'], $group_row['group_avatar_height'], 'GROUP_AVATAR') : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
-				$contour_avatar_img = (!empty($group_row['group_contour_avatar'])) ? '<img src="' . $phpbb_root_path . 'images/avatars/upload/' . $group_row["group_contour_avatar"] .'" alt="' . $group_row["group_contour_avatar"]. '" />' : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
+				$contour_avatar_img = (!empty($group_row['group_contour_avatar'])) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $group_row["group_contour_avatar"] .'" alt="' . $group_row["group_contour_avatar"]. '" />' : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
 
 				$display_gallery = (isset($_POST['display_gallery'])) ? true : false;
 
