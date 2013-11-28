@@ -544,7 +544,7 @@ switch ($mode)
 		}
 
 		$poster_avatar = get_user_avatar($member['user_avatar'], $member['user_avatar_type'], $member['user_avatar_width'], $member['user_avatar_height']);
-		$poster_contour = '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $member["user_contour_avatar"] .'" alt="' . $member["user_contour_avatar"]. '" />';
+		$poster_contour = '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $member["user_contour_avatar"] .'" alt="" />';
 		// We need to check if the modules 'zebra' ('friends' & 'foes' mode),  'notes' ('user_notes' mode) and  'warn' ('warn_user' mode) are accessible to decide if we can display appropriate links
 		$zebra_enabled = $friends_enabled = $foes_enabled = $user_notes_enabled = $warn_user_enabled = false;
 

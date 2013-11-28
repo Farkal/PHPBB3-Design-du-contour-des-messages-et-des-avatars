@@ -730,7 +730,7 @@ class acp_groups
 				$type_hidden	= ($group_type == GROUP_HIDDEN) ? ' checked="checked"' : '';
 
 				$avatar_img = (!empty($group_row['group_avatar'])) ? get_user_avatar($group_row['group_avatar'], $group_row['group_avatar_type'], $group_row['group_avatar_width'], $group_row['group_avatar_height'], 'GROUP_AVATAR') : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
-				$contour_avatar_img = (!empty($group_row['group_contour_avatar'])) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $group_row["group_contour_avatar"] .'" alt="' . $group_row["group_contour_avatar"]. '" />' : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
+				$contour_avatar_img = (!empty($group_row['group_contour_avatar'])) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $group_row["group_contour_avatar"] .'" alt="" />' : '<img src="' . $phpbb_admin_path . 'images/no_avatar.gif" alt="" />';
 
 				$display_gallery = (isset($_POST['display_gallery'])) ? true : false;
 

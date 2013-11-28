@@ -1102,7 +1102,7 @@ while ($row = $db->sql_fetchrow($result))
 
 				'online'			=> false,
 				'avatar'			=> ($user->optionget('viewavatars')) ? get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']) : '',
-				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $row["user_contour_avatar"] .'" alt="' . $row["user_contour_avatar"]. '" />' : '',
+				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $row["user_contour_avatar"] .'" alt="" />' : '',
 				'rank_title'		=> '',
 				'rank_image'		=> '',
 				'rank_image_src'	=> '',
@@ -1155,7 +1155,7 @@ while ($row = $db->sql_fetchrow($result))
 				'allow_pm'		=> $row['user_allow_pm'],
 
 				'avatar'		=> ($user->optionget('viewavatars')) ? get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']) : '',
-				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $row["user_contour_avatar"] .'" alt="' . $row["user_contour_avatar"]. '" />' : '',
+				'contour_avatar'	=> ($user->optionget('viewavatars')) ? '<img src="' . $phpbb_root_path . "download/file.$phpEx?avatar=" . $row["user_contour_avatar"] .'" alt="" />' : '',
 				'age'			=> '',
 
 				'rank_title'		=> '',
