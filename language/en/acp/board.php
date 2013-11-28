@@ -111,6 +111,14 @@ $lang = array_merge($lang, array(
 	'MAX_FILESIZE_EXPLAIN'			=> 'For uploaded avatar files. If this value is 0, the uploaded filesize is only limited by your PHP configuration.',
 	'MIN_AVATAR_SIZE'				=> 'Minimum avatar dimensions',
 	'MIN_AVATAR_SIZE_EXPLAIN'		=> 'Width x Height in pixels.',
+	'MIN_CONTOUR_SIZE'				=> 'Minimum contour dimensions',
+	'MIN_CONTOUR_SIZE_EXPLAIN'		=> 'Width x Height in pixels.',
+	'MAX_CONTOUR_SIZE'				=> 'Maximum contour dimensions',
+	'MAX_CONTOUR_SIZE_EXPLAIN'		=> 'Width x Height in pixels.',
+	'MAX_CONTOUR_FILESIZE'			=> 'Maximum contour file size',
+	'MAX_CONTOUR_FILESIZE_EXPLAIN'	=> 'For uploaded avatar files. If this value is 0, the uploaded filesize is only limited by your PHP configuration.',
+	'CONTOUR_STORAGE_PATH'			=> 'Contour storage path',
+	'CONTOUR_STORAGE_PATH_EXPLAIN'	=> 'Path under your phpBB root directory, e.g. <samp>images/avatars/upload</samp>.',
 ));
 
 // Message Settings

@@ -92,6 +92,8 @@ $lang = array_merge($lang, array(
 	'AVATAR_URL_NOT_FOUND'			=> 'Le fichier que vous avez spécifié est introuvable.',
 	'AVATAR_WRONG_FILESIZE'			=> 'La taille de l’avatar doit être comprise entre 0 et %1d %2s.',
 	'AVATAR_WRONG_SIZE'				=> 'La taille de l’avatar que vous avez envoyé mesure %5$d pixel(s) de large et de %6$d pixel(s) de haut. Cependant, la taille des avatars doit mesurer entre %1$d pixel(s) de large et %2$d pixel(s) de haut, mais ne doit pas dépasser %3$d pixel(s) de large et %4$d pixel(s) de haut.',
+	'CONTOUR_WRONG_FILESIZE'		=> 'La taille du contour doit être comprise entre 0 et %1d %2s.',
+	'CONTOUR_WRONG_SIZE'			=> 'La taille du contour que vous avez envoyé mesure %5$d pixel(s) de large et de %6$d pixel(s) de haut. Cependant, la taille des contours doit mesurer entre %1$d pixel(s) de large et %2$d pixel(s) de haut, mais ne doit pas dépasser %3$d pixel(s) de large et %4$d pixel(s) de haut.',
 
 	'BACK_TO_TOP'			=> 'Haut',
 	'BACK_TO_PREV'			=> 'Retour à la page précédente',

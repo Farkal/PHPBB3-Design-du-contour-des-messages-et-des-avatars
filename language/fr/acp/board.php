@@ -111,6 +111,14 @@ $lang = array_merge($lang, array(
 	'MAX_FILESIZE_EXPLAIN'			=> 'Cette option concerne les avatars transférés. Si cette valeur est réglée sur 0, la taille des fichiers transférable ne sera limitée que par votre configuration de PHP.',
 	'MIN_AVATAR_SIZE'				=> 'Dimensions minimales des avatars',
 	'MIN_AVATAR_SIZE_EXPLAIN'		=> 'Largeur x hauteur en pixels.',
+	'MIN_CONTOUR_SIZE'				=> 'Dimensions minimales des contours',
+	'MIN_CONTOUR_SIZE_EXPLAIN'		=> 'Largeur x hauteur en pixels.',
+	'MAX_CONTOUR_SIZE'				=> 'Dimensions maximales des contours',
+	'MAX_CONTOUR_SIZE_EXPLAIN'		=> 'Largeur x hauteur en pixels.',
+	'MAX_CONTOUR_FILESIZE'			=> 'Taille maximale des contours',
+	'MAX_CONTOUR_FILESIZE_EXPLAIN'	=> 'Cette option concerne les avatars transférés. Si cette valeur est réglée sur 0, la taille des fichiers transférable ne sera limitée que par votre configuration de PHP.',
+	'CONTOUR_STORAGE_PATH'			=> 'Chemin vers le répertoire de stockage des contours',
+	'CONTOUR_STORAGE_PATH_EXPLAIN'	=> 'Chemin depuis la racine de votre répertoire de phpBB, tel que <samp>images/avatars/upload</samp>.',
 ));
 
 // Message Settings

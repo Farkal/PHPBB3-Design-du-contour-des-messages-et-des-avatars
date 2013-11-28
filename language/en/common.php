@@ -92,6 +92,9 @@ $lang = array_merge($lang, array(
 	'AVATAR_URL_NOT_FOUND'			=> 'The file specified could not be found.',
 	'AVATAR_WRONG_FILESIZE'			=> 'The avatar’s filesize must be between 0 and %1d %2s.',
 	'AVATAR_WRONG_SIZE'				=> 'The submitted avatar is %5$d pixels wide and %6$d pixels high. Avatars must be at least %1$d pixels wide and %2$d pixels high, but no larger than %3$d pixels wide and %4$d pixels high.',
+	'CONTOUR_WRONG_FILESIZE'		=> 'The contour’s filesize must be between 0 and %1d %2s.',
+	'CONTOUR_WRONG_SIZE'			=> 'The submitted contour is %5$d pixels wide and %6$d pixels high. Contours must be at least %1$d pixels wide and %2$d pixels high, but no larger than %3$d pixels wide and %4$d pixels high.',
+
 
 	'BACK_TO_TOP'			=> 'Top',
 	'BACK_TO_PREV'			=> 'Back to previous page',

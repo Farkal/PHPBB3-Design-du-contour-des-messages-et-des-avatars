@@ -377,6 +377,12 @@ class acp_groups
 						// Move file and overwrite any existing image
 						$file->move_file($destination, true);
 						
+						if (sizeof($file->error))
+						{
+							$file->remove();
+							$error = array_merge($error, $file->error);
+						}
+						
 						$sql = 'UPDATE ' . GROUPS_TABLE . '
 						SET group_contour_avatar = "' . $db->sql_escape($data['user_id'] . '_' . time() . '.' . $file->get('extension')) . '"
 						WHERE group_id = ' . $group_id;
@@ -426,6 +432,9 @@ class acp_groups
 						$db->sql_query($sql);
 						
 					}
+
+					// MOD CONTOUR END
+					
 					/*
 					$allowedExts = array("gif", "jpeg", "jpg", "png");
 					$temp = explode(".", $_FILES["uploadfilecontour"]["name"]);
