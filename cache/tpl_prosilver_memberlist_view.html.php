@@ -10,7 +10,7 @@
 	<?php if ($this->_rootref['AVATAR_IMG']) {  ?>
 
 		<dl class="left-box">
-			<dt><span style="position: absolute"><?php echo (isset($this->_rootref['CONTOUR_IMG'])) ? $this->_rootref['CONTOUR_IMG'] : ''; ?></span><span style="position: relative; top: 19px; left: 28px; display: block; margin-bottom: 40px"><?php echo (isset($this->_rootref['AVATAR_IMG'])) ? $this->_rootref['AVATAR_IMG'] : ''; ?></span></dt>
+			<dt><span style="background: url(<?php echo (isset($this->_rootref['CONTOUR_IMG'])) ? $this->_rootref['CONTOUR_IMG'] : ''; ?>); width: 153px; height: 118px; text-align: center; padding: 20px 0px 0px; display: block; margin: 10px auto 0px;"><?php echo (isset($this->_rootref['AVATAR_IMG'])) ? $this->_rootref['AVATAR_IMG'] : ''; ?></span></dt>
 			<?php if ($this->_rootref['RANK_TITLE']) {  ?><dd style="text-align: center;"><?php echo (isset($this->_rootref['RANK_TITLE'])) ? $this->_rootref['RANK_TITLE'] : ''; ?></dd><?php } if ($this->_rootref['RANK_IMG']) {  ?><dd style="text-align: center;"><?php echo (isset($this->_rootref['RANK_IMG'])) ? $this->_rootref['RANK_IMG'] : ''; ?></dd><?php } ?>
 
 		</dl>

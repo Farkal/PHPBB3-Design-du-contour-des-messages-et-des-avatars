@@ -169,8 +169,9 @@
 			<dl class="postprofile" id="profile{postrow.POST_ID}">
 			<dt>
 				<!-- IF postrow.POSTER_AVATAR -->
-				<span style="position: absolute">{postrow.POSTER_CONTOUR_AVATAR}</span>
-					<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}"><span style="position: relative; top: 19px; left: 28px; display: block; margin-bottom: 40px">{postrow.POSTER_AVATAR}</span></a><!-- ELSE -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
+				<span style="background: url({postrow.POSTER_CONTOUR_AVATAR}); width: 153px; height: 118px; text-align: center; padding: 20px 0px 0px; display: block; margin: 10px auto 0px;">
+					<!-- IF postrow.U_POST_AUTHOR --><a href="{postrow.U_POST_AUTHOR}">{postrow.POSTER_AVATAR}</a><!-- ELSE -->{postrow.POSTER_AVATAR}<!-- ENDIF --><br />
+				</span>
 				<!-- ENDIF -->
 				<!-- IF not postrow.U_POST_AUTHOR --><strong>{postrow.POST_AUTHOR_FULL}</strong><!-- ELSE -->{postrow.POST_AUTHOR_FULL}<!-- ENDIF -->
 			</dt>
